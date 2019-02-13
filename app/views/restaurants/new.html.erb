@@ -1,0 +1,16 @@
+<%= simple_form_for @restaurant do |f| %>
+      <ul>
+        <% if @restaurant.errors.any? %>
+          <% @restaurant.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        <% end %>
+      </ul>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :category, collection: ['chinese', 'italian', 'japanese', 'french', 'belgian'], include_blank: false %>
+  <%= f.input :phone_number %>
+  <%= f.submit "add a Restaurant", class: "btn btn-primary" %>
+<% end %>
+
+<p><%= raw(p @restaurant.errors.full_messages) %></p>
